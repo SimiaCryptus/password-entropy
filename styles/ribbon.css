@@ -1,0 +1,293 @@
+/**
+ * Styles for the Parse Tree, Multi-Layer Stacked Segmentation Ribbon,
+ * Markov Transition Connectors, and Hypothesis Chips.
+ */
+
+.ribbon-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.color-legend-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.legend-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.legend-chip.cat-dict    { background: rgba(56, 189, 248, 0.14); border-color: rgba(56, 189, 248, 0.45); color: #bae6fd; }
+.legend-chip.cat-walk    { background: rgba(245, 158, 11, 0.14); border-color: rgba(245, 158, 11, 0.45); color: #fde68a; }
+.legend-chip.cat-seq     { background: rgba(45, 212, 191, 0.14); border-color: rgba(45, 212, 191, 0.45); color: #99f6e4; }
+.legend-chip.cat-pii     { background: rgba(244, 63, 94, 0.16);  border-color: rgba(244, 63, 94, 0.50); color: #fecdd3; }
+.legend-chip.cat-trans   { background: rgba(168, 85, 247, 0.16); border-color: rgba(168, 85, 247, 0.45); color: #e9d5ff; }
+.legend-chip.cat-charset { background: rgba(16, 185, 129, 0.14); border-color: rgba(16, 185, 129, 0.45); color: #a7f3d0; }
+
+.preview-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(168, 85, 247, 0.16);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: #f3e8ff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.reset-preview-btn {
+  background: #a855f7;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ribbon-scroll-viewport {
+  overflow-x: auto;
+  padding: 8px 4px 14px 4px;
+}
+
+.ribbon-flow-track {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 10px;
+  min-width: 100%;
+}
+
+/* Markov Transition Node between segments */
+.transition-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 18px;
+  min-width: 58px;
+}
+
+.trans-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #131c2e;
+  border: 1px dashed #475569;
+  border-radius: 8px;
+  padding: 4px 7px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+}
+
+.trans-label {
+  color: #94a3b8;
+  font-size: 0.63rem;
+}
+
+.trans-bits {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.trans-prob {
+  margin-top: 3px;
+  font-size: 0.65rem;
+  color: #64748b;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Segment Column */
+.segment-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 185px;
+  max-width: 260px;
+  flex: 1;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.segment-column:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.45);
+}
+
+.segment-column.cat-dict    { border-color: rgba(56, 189, 248, 0.5);  background: linear-gradient(180deg, rgba(56, 189, 248, 0.08) 0%, rgba(15, 23, 42, 0.85) 100%); }
+.segment-column.cat-walk    { border-color: rgba(245, 158, 11, 0.5);  background: linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, rgba(15, 23, 42, 0.85) 100%); }
+.segment-column.cat-seq,
+.segment-column.cat-rep     { border-color: rgba(45, 212, 191, 0.5);  background: linear-gradient(180deg, rgba(45, 212, 191, 0.08) 0%, rgba(15, 23, 42, 0.85) 100%); }
+.segment-column.cat-pii     { border-color: rgba(244, 63, 94, 0.55);  background: linear-gradient(180deg, rgba(244, 63, 94, 0.10) 0%, rgba(15, 23, 42, 0.85) 100%); }
+.segment-column.cat-charset { border-color: rgba(16, 185, 129, 0.5);  background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.85) 100%); }
+
+.segment-token-pill {
+  background: #090d16;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+
+.token-meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+}
+
+.segment-column.cat-dict .token-cat-tag    { color: #38bdf8; font-weight: 700; }
+.segment-column.cat-walk .token-cat-tag    { color: #fbbf24; font-weight: 700; }
+.segment-column.cat-seq .token-cat-tag,
+.segment-column.cat-rep .token-cat-tag     { color: #2dd4bf; font-weight: 700; }
+.segment-column.cat-pii .token-cat-tag     { color: #fb7185; font-weight: 700; }
+.segment-column.cat-charset .token-cat-tag { color: #34d399; font-weight: 700; }
+
+.token-chars {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f8fafc;
+  word-break: break-all;
+}
+
+/* Vertical Transducer Stack Cards */
+.segment-layers-stack {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+
+.stack-connector-line {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #64748b;
+  line-height: 1;
+}
+
+.stack-layer-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 0.76rem;
+}
+
+.stack-layer-card.layer-type-case,
+.stack-layer-card.layer-type-l33t,
+.stack-layer-card.layer-type-edit {
+  border-color: rgba(168, 85, 247, 0.45);
+  background: rgba(168, 85, 247, 0.10);
+}
+
+.layer-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.layer-kind-badge {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.03em;
+}
+
+.stack-layer-card.layer-type-case .layer-kind-badge,
+.stack-layer-card.layer-type-l33t .layer-kind-badge,
+.stack-layer-card.layer-type-edit .layer-kind-badge {
+  color: #d8b4fe;
+}
+
+.layer-module-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.layer-bit-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.74rem;
+  color: #f8fafc;
+}
+
+.layer-title {
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 2px;
+}
+
+.layer-detail {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  margin-bottom: 4px;
+}
+
+.layer-formula {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  color: #64748b;
+}
+
+.segment-footer-total {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #cbd5e1;
+}
+
+.seg-subtotal-label {
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+.mdl-equation-bar {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+}
+
+.mdl-equation-bar .eq-terms {
+  color: #38bdf8;
+}
+
+.mdl-equation-bar .eq-rhs {
+  color: #f8fafc;
+  margin-left: auto;
+}

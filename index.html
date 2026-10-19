@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Honest Password Entropy — Minimum Description Length &amp; Adversarial Modeling</title>
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./styles/ribbon.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Header & Mode Switcher -->
+    <header class="lab-header">
+      <div>
+        <div class="brand-eyebrow">Kerckhoffs's Principle · Minimum Description Length</div>
+        <h1 class="lab-title">Honest Password Entropy</h1>
+        <p class="lab-subtitle">
+          Framing password strength as an information-theoretic compression problem:
+          <strong>H*(S) = min<sub>π</sub> ( L(π) + L(S | π) )</strong> across lexical, spatial, sequence, personal, and transducer models.
+        </p>
+      </div>
+
+      <nav class="mode-tabs" aria-label="View Mode">
+        <button type="button" class="mode-tab-btn active" data-tab-target="labViewPanel">
+          Adversarial Lab Workbench
+        </button>
+        <button type="button" class="mode-tab-btn" data-tab-target="componentViewPanel">
+          &lt;honest-password-input&gt; Component
+        </button>
+      </nav>
+    </header>
+
+    <!-- TAB 1: Interactive Adversarial Lab -->
+    <main id="labViewPanel" class="tab-view-panel">
+      <!-- Curated Preset Scenarios -->
+      <section class="preset-section" aria-label="Preset Scenarios">
+        <div class="preset-header-row">
+          <span class="preset-label-title">Curated MDL Scenarios</span>
+          <span>Click a preset to inspect how an adversary compresses common human patterns</span>
+        </div>
+        <div id="presetChipsBar" class="preset-chips-bar"></div>
+        <p id="presetScenarioDesc" class="preset-scenario-desc"></p>
+      </section>
+
+      <!-- Primary Password Input & Character Index Ruler -->
+      <section class="primary-input-panel" aria-label="Password Input">
+        <div class="input-top-bar">
+          <label for="labPasswordInput" class="input-field-label">Candidate Password String (S)</label>
+          <span class="input-equation-hint">Evaluated in real time via K-Best DAG Lattice Solver</span>
+        </div>
+        <div class="password-box-row">
+          <input
+            id="labPasswordInput"
+            class="lab-password-input"
+            type="text"
+            value="P@ssw0rd123!"
+            placeholder="Type any password or passphrase..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <div class="input-action-buttons">
+            <button type="button" id="labToggleVisBtn" class="lab-btn">Hide</button>
+            <button type="button" id="labRandomPassBtn" class="lab-btn accent-btn">🎲 Generate Passphrase</button>
+          </div>
+        </div>
+        <div id="passwordCharRuler" class="password-char-ruler"></div>
+      </section>
+
+      <!-- 1. The Entropy Ledger & Dual Comparison Bar -->
+      <section id="ledgerMount" class="section-mount" aria-label="Entropy Ledger"></section>
+
+      <!-- 2. Parse Tree & Multi-Layer Stacked Segmentation Ribbon -->
+      <section id="ribbonMount" class="section-mount ribbon-card-container" aria-label="Segmentation Ribbon"></section>
+
+      <!-- 3. Actionable Counterfactual Feedback -->
+      <section id="advisorMount" class="section-mount" aria-label="Counterfactual Advisor"></section>
+
+      <!-- 4. Interactive Attacker Knowledge Panel (Sophistication Toggles & Personal Context Sandbox) -->
+      <section id="attackerMount" class="section-mount" aria-label="Attacker Knowledge Sandbox"></section>
+
+      <!-- 5. Competing Hypotheses Explorer -->
+      <section id="hypothesesMount" class="section-mount" aria-label="Competing Hypotheses Explorer"></section>
+    </main>
+
+    <!-- TAB 2: Reusable Web Component Demo -->
+    <section id="componentViewPanel" class="tab-view-panel" style="display: none;">
+      <div class="showcase-grid">
+        <div class="attacker-card">
+          <div class="card-header">
+            <h3 class="section-title">Drop-In Custom Element: <code>&lt;honest-password-input&gt;</code></h3>
+            <p class="section-subtitle">
+              Self-contained Shadow DOM Web Component with live Honest vs. Naive entropy metering, inline segmentation pills, and 1-click counterfactual fixes.
+            </p>
+          </div>
+
+          <honest-password-input
+            id="showcasePasswordComponent"
+            label="Create Account Password"
+            value="Tr0ub4dor&3"
+            min-bits="50"
+            context='{"name":"Alex Morgan","username":"amorgan","birthdate":"1994-05-14"}'
+          ></honest-password-input>
+
+          <div style="margin-top: 18px;">
+            <h4 class="section-title" style="font-size: 0.85rem;">Usage Markup</h4>
+            <pre class="code-block-pre"><code>&lt;script type="module" src="./src/component/honest-password-input.js"&gt;&lt;/script&gt;
+
+&lt;honest-password-input
+  label="Create Account Password"
+  value="Tr0ub4dor&amp;3"
+  min-bits="50"
+  context='{"name":"Alex Morgan","username":"amorgan"}'
+&gt;&lt;/honest-password-input&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="attacker-card">
+          <div class="card-header">
+            <h3 class="section-title">Live <code>entropy-change</code> CustomEvent Payload</h3>
+            <p class="section-subtitle">
+              Dispatched on every keystroke or counterfactual edit so forms can enforce honest bit thresholds.
+            </p>
+          </div>
+          <pre id="componentEventPayload" class="code-block-pre"></pre>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
